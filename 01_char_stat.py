@@ -28,3 +28,38 @@
 #  - по алфавиту по возрастанию
 #  - по алфавиту по убыванию
 # Для этого пригодится шаблон проектирование "Шаблонный метод" см https://goo.gl/Vz4828
+from pprint import pprint
+import os
+
+stat = {}
+
+file_name = "python_snippets\\voyna-i-mir.txt"
+
+with open(file_name, 'r', encoding='cp1251') as file:
+    for line in file:
+        for char in line:
+            if char.isalpha() and char in stat:
+                stat[char] += 1
+            elif char.isalpha() and char not in stat:
+                stat[char] = 0
+            else:
+                continue
+
+list_keys = list(stat.keys())
+list_keys.sort()
+
+print('+','-'*10,'+','-'*10,'+')
+print('|{item:^12}|{val:^12}|'.format(item="буква", val="частота"))
+print('+','-'*10,'+','-'*10,'+')
+all = 0
+for item in list_keys:
+    all += stat[item]
+    print('|{item:^12}|{val:^12}|'.format(item=item, val=stat[item]))
+
+print('+','-'*10,'+','-'*10,'+')
+print('|{item:^12}|{val:^12}|'.format(item="итого", val=all))
+print('+','-'*10,'+','-'*10,'+')
+
+
+# 2374102
+

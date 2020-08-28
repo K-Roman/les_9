@@ -21,6 +21,7 @@ class Chatterer:
         zfile = zipfile.ZipFile(self.file_name, 'r')
         for filename in zfile.namelist():
             zfile.extract(filename)
+            print(filename)
         self.file_name = filename
 
     def collect(self):
